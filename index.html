@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sajilo Gift</title>
+
+<style>
+/* This is CSS. It changes how the page looks. */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+/* A class starts with a dot. We use it in HTML like class="small-title" */
+.small-title {
+  font-size: 12px;
+  color: gray;
+  letter-spacing: 2px;
+}
+
+.red-text {
+  color: #b5472f;
+}
+
+/* Buttons */
+.main-button {
+  background-color: #b5472f;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+}
+
+.outline-button {
+  background-color: white;
+  color: black;
+  padding: 12px 24px;
+  border: 1px solid gray;
+  border-radius: 25px;
+}
+
+/* display: flex puts the boxes side by side in one row */
+.top-part {
+  display: flex;
+}
+
+.top-left {
+  width: 50%;
+}
+
+.top-right {
+  width: 50%;
+  height: 250px;
+  background-color: #f3e3dc;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 90px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* The five occasion boxes */
+.occasion {
+  width: 20%;
+  padding: 25px 0px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+/* The four gift cards */
+.card {
+  width: 25%;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.card-picture {
+  height: 70px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 35px;
+  padding-top: 15px;
+  box-sizing: border-box;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PART 1: The top section -->
+<div class="top-part">
+
+  <div class="top-left">
+    <p class="small-title">PERSONALIZED GIFT BOXES</p>
+    <h1>Gifts that feel like <span class="red-text">them.</span></h1>
+    <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
+    <button class="main-button">Build your box</button>
+    <button class="outline-button">Shop by occasion</button>
+  </div>
+
+  <div class="top-right">
+    🕯️ 🎁 🪴
+  </div>
+
+</div>
+
+
+<!-- PART 2: Shop by occasion -->
+<br>
+<p class="small-title">SHOP BY OCCASION</p>
+<a href="#">View all</a>
+<br><br>
+
+<div class="row">
+  <div class="occasion" style="background-color: #f3e3dc;">Birthday</div>
+  <div class="occasion" style="background-color: #dde5d6;">Anniversary</div>
+  <div class="occasion" style="background-color: #dce4ec;">Graduation</div>
+  <div class="occasion" style="background-color: #e6dfea;">Valentine's</div>
+  <div class="occasion" style="background-color: #efe6d6;">Thank you</div>
+</div>
+
+
+<!-- PART 3: Featured gifts -->
+<br>
+<p class="small-title">FEATURED GIFTS</p>
+
+<div class="row">
+
+  <div class="card">
+    <div class="card-picture" style="background-color: #efe6d6;">🕯️</div>
+    <h3>Cozy evening</h3>
+    <p>NPR 1500</p>
+  </div>
+
+  <div class="card">
+    <div class="card-picture" style="background-color: #f3e3dc;">🍫</div>
+    <h3>Sweet moments</h3>
+    <p>NPR 1200</p>
+  </div>
+
+  <div class="card">
+    <div class="card-picture" style="background-color: #dce4ec;">📕</div>
+    <h3>Study buddy</h3>
+    <p>NPR 900</p>
+  </div>
+
+  <div class="card">
+    <div class="card-picture" style="background-color: #dde5d6;">🪴</div>
+    <h3>Green thanks</h3>
+    <p>NPR 800</p>
+  </div>
+
+</div>
+
+</body>
+</html>
