@@ -4,15 +4,16 @@
   <title>Sajilo Gift</title>
 
   <style>
+    /* Style for the whole page */
     body {
       font-family: Arial, sans-serif;
       background-color: #fbf7f2;
-      color: #2b2420;
       margin: 0;
       padding: 20px 40px;
     }
 
-    .header {
+    /* Top part: logo on the left, menu in the middle, cart on the right */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -25,9 +26,9 @@
       font-family: Georgia, serif;
     }
 
-    .menu a {
-      margin: 0 15px;
-      color: #444;
+    nav a {
+      margin: 0 12px;
+      color: #333;
       text-decoration: none;
     }
 
@@ -38,175 +39,117 @@
       border-radius: 20px;
     }
 
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 40px;
+    /* Style for the welcome section */
+    .welcome {
+      background-color: #f5e1dc;
+      padding: 30px;
+      margin: 30px 0;
+      border-radius: 10px;
     }
 
-    .hero-text {
-      width: 45%;
+    .welcome h2 {
+      font-size: 32px;
+      margin: 10px 0;
     }
 
-    .small-title {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #555;
-    }
-
-    .hero-text h1 {
-      font-family: Georgia, serif;
-      font-size: 48px;
-      margin: 15px 0;
-    }
-
-    .hero-text h1 span {
+    .welcome .red {
       color: #b8472d;
     }
 
-    .btn-red {
+    .main-button {
       background-color: #b8472d;
       color: white;
       border: none;
-      padding: 12px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    .btn-outline {
-      background-color: white;
-      border: 1px solid #aaa;
-      padding: 12px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    .hero-image {
-      width: 45%;
-      height: 220px;
-      background-color: #f5e1dc;
+      padding: 10px 20px;
       border-radius: 20px;
+    }
+
+    .second-button {
+      background-color: white;
+      border: 1px solid gray;
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+
+    /* Style for the small boxes (occasions and gifts) */
+    .box {
+      display: inline-block;
+      width: 150px;
+      padding: 20px;
+      margin: 5px;
+      border-radius: 10px;
       text-align: center;
-      line-height: 220px;
-      color: #b8472d;
-    }
-
-    .section-top {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-    }
-
-    .occasions {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .occasion {
-      flex: 1;
-      text-align: center;
-      padding: 25px 0;
-      border-radius: 15px;
-      font-family: Georgia, serif;
-      font-size: 18px;
-    }
-
-    .gifts {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
     }
 
     .gift {
-      flex: 1;
       background-color: white;
-      border: 1px solid #eee;
-      border-radius: 15px;
-      padding: 10px;
-    }
-
-    .gift-image {
-      height: 60px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .gift p {
-      margin: 4px 0;
-      font-size: 13px;
+      border: 1px solid #ddd;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="header">
+  <!-- Top part: logo, menu and cart in one row -->
+  <header>
     <div class="logo">Sajilo Gift</div>
 
-    <div class="menu">
+    <nav>
       <a href="#">Occasions</a>
       <a href="#">Collection</a>
       <a href="#">Build a box</a>
       <a href="#">Track order</a>
-    </div>
+    </nav>
 
-    <div class="cart">Cart</div>
-  </div>
+    <div class="cart">Cart - 2</div>
+  </header>
 
-  <div class="hero">
-    <div class="hero-text">
-      <p class="small-title">PERSONALIZED GIFT BOXES</p>
-      <h1>Gifts that feel like <span>them.</span></h1>
-      <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
-      <button class="btn-red">Build your box</button>
-      <button class="btn-outline">Shop by occasion</button>
-    </div>
+  <!-- Welcome section -->
+  <section class="welcome">
+    <p>PERSONALIZED GIFT BOXES</p>
+    <h2>Gifts that feel like <span class="red">them.</span></h2>
+    <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
+    <button class="main-button">Build your box</button>
+    <button class="second-button">Shop by occasion</button>
+  </section>
 
-    <div class="hero-image">Image</div>
-  </div>
-
-  <div class="section-top">
-    <span class="small-title">SHOP BY OCCASION</span>
+  <!-- Occasions section -->
+  <section>
+    <h3>Shop by occasion</h3>
     <a href="#">View all</a>
-  </div>
+    <br><br>
 
-  <div class="occasions">
-    <div class="occasion" style="background-color: #f5e1dc;">Birthday</div>
-    <div class="occasion" style="background-color: #dde6da;">Anniversary</div>
-    <div class="occasion" style="background-color: #dde6ee;">Graduation</div>
-    <div class="occasion" style="background-color: #e6dfee;">Valentine's</div>
-    <div class="occasion" style="background-color: #efe5d3;">Thank you</div>
-  </div>
+    <div class="box" style="background-color: #f5e1dc;">Birthday</div>
+    <div class="box" style="background-color: #dde6da;">Anniversary</div>
+    <div class="box" style="background-color: #dde6ee;">Graduation</div>
+    <div class="box" style="background-color: #e6dfee;">Valentine's</div>
+    <div class="box" style="background-color: #efe5d3;">Thank you</div>
+  </section>
 
-  <p class="small-title" style="margin-top: 40px;">FEATURED GIFTS</p>
+  <!-- Featured gifts section -->
+  <section>
+    <h3>Featured gifts</h3>
 
-  <div class="gifts">
-    <div class="gift">
-      <div class="gift-image" style="background-color: #efe5d3;"></div>
-      <p>Cozy evening</p>
+    <div class="box gift">
+      <h4>Cozy evening</h4>
       <p>NPR 1500</p>
     </div>
 
-    <div class="gift">
-      <div class="gift-image" style="background-color: #f5e1dc;"></div>
-      <p>Sweet moments</p>
+    <div class="box gift">
+      <h4>Sweet moments</h4>
       <p>NPR 1200</p>
     </div>
 
-    <div class="gift">
-      <div class="gift-image" style="background-color: #dde6ee;"></div>
-      <p>Study buddy</p>
+    <div class="box gift">
+      <h4>Study buddy</h4>
       <p>NPR 800</p>
     </div>
 
-    <div class="gift">
-      <div class="gift-image" style="background-color: #dde6da;"></div>
-      <p>Green thanks</p>
+    <div class="box gift">
+      <h4>Green thanks</h4>
       <p>NPR 800</p>
     </div>
-  </div>
+  </section>
 
 </body>
 </html>
