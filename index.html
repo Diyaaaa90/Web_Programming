@@ -4,16 +4,19 @@
   <title>Sajilo Gift</title>
 
   <style>
-  
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #fbf7f2;
+      color: #2b2420;
       margin: 0;
       padding: 20px 40px;
     }
 
-    
-    header {
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -26,9 +29,9 @@
       font-family: Georgia, serif;
     }
 
-    nav a {
-      margin: 0 12px;
-      color: #333;
+    .menu a {
+      margin: 0 15px;
+      color: #444;
       text-decoration: none;
     }
 
@@ -39,111 +42,456 @@
       border-radius: 20px;
     }
 
-    .welcome {
-      background-color: #f5e1dc;
-      padding: 30px;
-      margin: 30px 0;
-      border-radius: 10px;
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
     }
 
-    .welcome h2 {
-      font-size: 32px;
-      margin: 10px 0;
+    .hero-text {
+      width: 45%;
     }
 
-    .welcome .red {
+    .small-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #555;
+    }
+
+    .hero-text h1 {
+      font-family: Georgia, serif;
+      font-size: 48px;
+      margin: 15px 0;
+    }
+
+    .hero-text h1 span {
       color: #b8472d;
     }
 
-    .main-button {
+    .btn-red {
       background-color: #b8472d;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 12px 22px;
+      border-radius: 25px;
+      cursor: pointer;
     }
 
-    .second-button {
+    .btn-outline {
       background-color: white;
-      border: 1px solid gray;
-      padding: 10px 20px;
-      border-radius: 20px;
+      border: 1px solid #aaa;
+      padding: 12px 22px;
+      border-radius: 25px;
+      cursor: pointer;
     }
 
-    .box {
-      display: inline-block;
-      width: 150px;
-      padding: 20px;
-      margin: 5px;
-      border-radius: 10px;
+    .hero-image {
+      width: 45%;
+      height: 220px;
+      background-color: #f5e1dc;
+      border-radius: 20px;
       text-align: center;
+      line-height: 220px;
+      color: #b8472d;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .occasions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .occasion {
+      flex: 1;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 15px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+    }
+
+    .gifts {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
     }
 
     .gift {
+      flex: 1;
       background-color: white;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      padding: 10px;
+    }
+
+    .gift-image {
+      height: 60px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .gift p {
+      margin: 4px 0;
+      font-size: 13px;
+    }
+
+    /* ---------- NEW: Collection section ---------- */
+
+    .collection {
+      margin-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    .collection-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .collection-top h2 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      margin: 8px 0 0 0;
+    }
+
+    .collection-tools {
+      display: flex;
+      gap: 12px;
+    }
+
+    .search-box {
+      width: 160px;
+      padding: 12px 14px;
       border: 1px solid #ddd;
+      border-radius: 12px;
+      background-color: white;
+      font-size: 12px;
+    }
+
+    .sort-btn {
+      padding: 12px 20px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      background-color: #fbf7f2;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .product {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 18px;
+      padding: 8px 8px 12px 8px;
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: #f5e1dc;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .product h3 {
+      font-size: 13px;
+      font-weight: normal;
+      margin: 12px 0 4px 5px;
+    }
+
+    .product p {
+      font-size: 11px;
+      color: #666;
+      margin: 0 0 0 5px;
+    }
+
+    .product-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-link:hover .product {
+      border-color: #b8472d;
+    }
+
+    /* ---------- Product detail view ---------- */
+
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      color: #444;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .detail {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .detail img {
+      width: 45%;
+      height: auto;
+      border-radius: 20px;
+    }
+
+    .detail-text {
+      width: 45%;
+    }
+
+    .detail-text h1 {
+      font-family: Georgia, serif;
+      font-size: 40px;
+      margin: 12px 0;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #b8472d;
+      margin: 0 0 15px 0;
+    }
+
+    .description {
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
+  <div class="header">
     <div class="logo">Sajilo Gift</div>
 
-    <nav>
+    <div class="menu">
       <a href="#">Occasions</a>
-      <a href="#">Collection</a>
+      <a href="#collection" onclick="goBack()">Collection</a>
       <a href="#">Build a box</a>
       <a href="#">Track order</a>
-    </nav>
+    </div>
 
-    <div class="cart">Cart - 2</div>
-  </header>
+    <div class="cart">Cart</div>
+  </div>
 
-  <section class="welcome">
-    <p>PERSONALIZED GIFT BOXES</p>
-    <h2>Gifts that feel like <span class="red">them.</span></h2>
-    <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
-    <button class="main-button">Build your box</button>
-    <button class="second-button">Shop by occasion</button>
-  </section>
+  <div id="main-page">
 
-  <section>
-    <h3>Shop by occasion</h3>
+  <div class="hero">
+    <div class="hero-text">
+      <p class="small-title">PERSONALIZED GIFT BOXES</p>
+      <h1>Gifts that feel like <span>them.</span></h1>
+      <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
+      <button class="btn-red">Build your box</button>
+      <button class="btn-outline">Shop by occasion</button>
+    </div>
+
+    <div class="hero-image">Image</div>
+  </div>
+
+  <div class="section-top">
+    <span class="small-title">SHOP BY OCCASION</span>
     <a href="#">View all</a>
-    <br><br>
+  </div>
 
-    <div class="box" style="background-color: #f5e1dc;">Birthday</div>
-    <div class="box" style="background-color: #dde6da;">Anniversary</div>
-    <div class="box" style="background-color: #dde6ee;">Graduation</div>
-    <div class="box" style="background-color: #e6dfee;">Valentine's</div>
-    <div class="box" style="background-color: #efe5d3;">Thank you</div>
-  </section>
+  <div class="occasions">
+    <div class="occasion" style="background-color: #f5e1dc;">Birthday</div>
+    <div class="occasion" style="background-color: #dde6da;">Anniversary</div>
+    <div class="occasion" style="background-color: #dde6ee;">Graduation</div>
+    <div class="occasion" style="background-color: #e6dfee;">Valentine's</div>
+    <div class="occasion" style="background-color: #efe5d3;">Thank you</div>
+  </div>
 
-  <section>
-    <h3>Featured gifts</h3>
+  <p class="small-title" style="margin-top: 40px;">FEATURED GIFTS</p>
 
-    <div class="box gift">
-      <h4>Cozy evening</h4>
+  <div class="gifts">
+    <div class="gift">
+      <div class="gift-image" style="background-color: #efe5d3;"></div>
+      <p>Cozy evening</p>
       <p>NPR 1500</p>
     </div>
 
-    <div class="box gift">
-      <h4>Sweet moments</h4>
+    <div class="gift">
+      <div class="gift-image" style="background-color: #f5e1dc;"></div>
+      <p>Sweet moments</p>
       <p>NPR 1200</p>
     </div>
 
-    <div class="box gift">
-      <h4>Study buddy</h4>
+    <div class="gift">
+      <div class="gift-image" style="background-color: #dde6ee;"></div>
+      <p>Study buddy</p>
       <p>NPR 800</p>
     </div>
 
-    <div class="box gift">
-      <h4>Green thanks</h4>
+    <div class="gift">
+      <div class="gift-image" style="background-color: #dde6da;"></div>
+      <p>Green thanks</p>
       <p>NPR 800</p>
     </div>
-  </section>
+  </div>
+
+  <!-- NEW: Collection section -->
+  <div class="collection" id="collection">
+
+    <div class="collection-top">
+      <div>
+        <span class="small-title">SHOP</span>
+        <h2>Gift collection</h2>
+      </div>
+
+      <div class="collection-tools">
+        <input class="search-box" type="text" placeholder="Search gifts">
+        <button class="sort-btn">Sort: Popular</button>
+      </div>
+    </div>
+
+    <div class="product-grid">
+
+      <a class="product-link" href="#" onclick="showProduct('candle'); return false;">
+        <div class="product">
+          <img src="images/candle.jpg" alt="Scented candle">
+          <h3>Scented candle</h3>
+          <p>NPR 450</p>
+        </div>
+      </a>
+
+      <a class="product-link" href="#" onclick="showProduct('chocolate'); return false;">
+        <div class="product">
+          <img src="images/chocolate.jpg" alt="Chocolate box">
+          <h3>Chocolate box</h3>
+          <p>NPR 600</p>
+        </div>
+      </a>
+
+      <a class="product-link" href="#" onclick="showProduct('loktapaper'); return false;">
+        <div class="product">
+          <img src="images/loktapaper.jpg" alt="Lokta notebook">
+          <h3>Lokta notebook</h3>
+          <p>NPR 350</p>
+        </div>
+      </a>
+
+      <a class="product-link" href="#" onclick="showProduct('teasampler'); return false;">
+        <div class="product">
+          <img src="images/teasampler.jpg" alt="Tea sampler">
+          <h3>Tea sampler</h3>
+          <p>NPR 500</p>
+        </div>
+      </a>
+
+      <a class="product-link" href="#" onclick="showProduct('plant'); return false;">
+        <div class="product">
+          <img src="images/plant.jpg" alt="Mini plant">
+          <h3>Mini plant</h3>
+          <p>NPR 400</p>
+        </div>
+      </a>
+
+      <a class="product-link" href="#" onclick="showProduct('photoframe'); return false;">
+        <div class="product">
+          <img src="images/photoframe.jpg" alt="Photo frame">
+          <h3>Photo frame</h3>
+          <p>NPR 700</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  </div>
+  <!-- end of main page -->
+
+  <!-- Product detail view (hidden until a product is clicked) -->
+  <div id="detail-page" style="display: none;">
+    <a class="back" href="#" onclick="goBack(); return false;">&larr; Back to collection</a>
+
+    <div class="detail">
+      <img id="detail-img" src="" alt="">
+
+      <div class="detail-text">
+        <p class="small-title">GIFT COLLECTION</p>
+        <h1 id="detail-name"></h1>
+        <p class="price" id="detail-price"></p>
+        <p class="description" id="detail-desc"></p>
+        <button class="btn-red">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var products = {
+      candle: {
+        name: "Scented candle",
+        price: "NPR 450",
+        image: "images/candle.jpg",
+        desc: "Hand-poured candle with a soft, calming scent. It burns slowly and fills the room with warmth, making it a cozy gift for any evening."
+      },
+      chocolate: {
+        name: "Chocolate box",
+        price: "NPR 600",
+        image: "images/chocolate.jpg",
+        desc: "A box of rich, smooth chocolates in assorted flavours. A sweet treat that works for birthdays, anniversaries or a simple thank you."
+      },
+      loktapaper: {
+        name: "Lokta notebook",
+        price: "NPR 350",
+        image: "images/loktapaper.jpg",
+        desc: "A notebook made from traditional Nepali lokta paper. Handmade and eco-friendly, great for journaling, sketching or taking notes."
+      },
+      teasampler: {
+        name: "Tea sampler",
+        price: "NPR 500",
+        image: "images/teasampler.jpg",
+        desc: "A small collection of different teas to taste and enjoy. A relaxing gift for tea lovers, ready to brew with a warm cup."
+      },
+      plant: {
+        name: "Mini plant",
+        price: "NPR 400",
+        image: "images/plant.jpg",
+        desc: "A cute mini plant in a small pot that brightens any desk or shelf. Easy to care for and a fresh, green way to say thanks."
+      },
+      photoframe: {
+        name: "Photo frame",
+        price: "NPR 700",
+        image: "images/photoframe.jpg",
+        desc: "A simple, stylish frame to hold a favourite memory. A lovely gift for friends and family that they can display at home."
+      }
+    };
+
+    function showProduct(key) {
+      var p = products[key];
+      document.getElementById("detail-img").src = p.image;
+      document.getElementById("detail-img").alt = p.name;
+      document.getElementById("detail-name").innerHTML = p.name;
+      document.getElementById("detail-price").innerHTML = p.price;
+      document.getElementById("detail-desc").innerHTML = p.desc;
+
+      document.getElementById("main-page").style.display = "none";
+      document.getElementById("detail-page").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      document.getElementById("detail-page").style.display = "none";
+      document.getElementById("main-page").style.display = "block";
+      document.getElementById("collection").scrollIntoView();
+    }
+  </script>
 
 </body>
 </html>
