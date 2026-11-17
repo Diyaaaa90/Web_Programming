@@ -1,497 +1,609 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sajilo Gift</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --pink-deep: #ad5570;   
+      --pink-dark: #94435c;   
+      --pink: #f5c9d6;        
+      --pink-soft: #fbe3ea;   
+      --marigold: #f2a93b;   
+      --cream: #fff8f6;      
+      --sand: #fbe9e7;       
+      --text: #3a2229;
+      --text-soft: #7a5a62;
+      --white: #ffffff;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Poppins', Arial, sans-serif;
+
+      --radius: 16px;
+      --shadow: 0 6px 18px rgba(46, 26, 20, 0.1);
+      --shadow-big: 0 16px 32px rgba(46, 26, 20, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fbf7f2;
-      color: #2b2420;
-      margin: 0;
-      padding: 20px 40px;
+      font-family: var(--font-body);
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    .header {
+    img {
+      display: block; width: 100%;
+    }
+
+    a {
+      color: inherit; text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a:focus-visible,S
+    button:focus-visible {
+      outline: 3px solid var(--marigold);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: var(--cream);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
 
     .logo {
-      color: #b8472d;
-      font-size: 24px;
-      font-weight: bold;
-      font-family: Georgia, serif;
+      font-family: var(--font-heading);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--pink-deep);
     }
 
-    .menu a {
-      margin: 0 15px;
-      color: #444;
-      text-decoration: none;
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-weight: 500;
+      font-size: 15px;
+      padding: 4px 0;
+    }
+
+ 
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--pink-deep);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .cart {
-      background-color: #2b2420;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
+      background-color: var(--pink-deep);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 30px;
+      transition: background-color 0.3s;
     }
+
+    .cart:hover {
+      background-color: var(--pink-dark);
+    }
+
 
     .hero {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 40px;
+      min-height: 460px;
+      margin-top: 32px;
+      padding: 64px;
+      background:
+        linear-gradient(90deg, rgba(251, 227, 234, 0.96) 0%, rgba(251, 227, 234, 0.85) 45%, rgba(251, 227, 234, 0) 100%),
+        url('images/gifts.jpg') center / cover no-repeat;
+      color: var(--text);
+      border-radius: 28px;
+      box-shadow: var(--shadow-big);
     }
 
     .hero-text {
-      width: 45%;
+      max-width: 540px;
     }
 
-    .small-title {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #555;
+    .hero-tag {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--pink-deep);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 20px;
     }
 
-    .hero-text h1 {
-      font-family: Georgia, serif;
-      font-size: 48px;
-      margin: 15px 0;
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
-    .hero-text h1 span {
-      color: #b8472d;
+    .hero h1 span {
+      color: var(--pink-deep);
+      font-style: italic;
     }
 
-    .btn-red {
-      background-color: #b8472d;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 25px;
+    .hero p {
+      font-size: 18px;
+      max-width: 460px;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 30px;
+      border: 2px solid transparent;
       cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-primary {
+      background-color: var(--marigold);
+      color: var(--text);
+      margin-right: 10px;
+    }
+
+    .btn-primary:hover {
+      background-color: #ffbc55;
     }
 
     .btn-outline {
-      background-color: white;
-      border: 1px solid #aaa;
-      padding: 12px 22px;
-      border-radius: 25px;
-      cursor: pointer;
+      background-color: transparent;
+      color: var(--pink-deep);
+      border-color: var(--pink-deep);
     }
 
-    .hero-image {
-      width: 45%;
-      height: 220px;
-      background-color: #f5e1dc;
-      border-radius: 20px;
-      text-align: center;
-      line-height: 220px;
-      color: #b8472d;
+    .btn-outline:hover {
+      background-color: var(--pink-deep);
+      color: var(--white);
     }
 
-    .section-top {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
+
+    .section {
+      padding-top: 72px;
     }
 
-    .occasions {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .occasion {
-      flex: 1;
-      text-align: center;
-      padding: 25px 0;
-      border-radius: 15px;
-      font-family: Georgia, serif;
-      font-size: 18px;
-    }
-
-    .gifts {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .gift {
-      flex: 1;
-      background-color: white;
-      border: 1px solid #eee;
-      border-radius: 15px;
-      padding: 10px;
-    }
-
-    .gift-image {
-      height: 60px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .gift p {
-      margin: 4px 0;
-      font-size: 13px;
-    }
-
-    /* ---------- NEW: Collection section ---------- */
-
-    .collection {
-      margin-top: 80px;
-      padding-bottom: 40px;
-    }
-
-    .collection-top {
+    .section-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      margin-bottom: 32px;
     }
 
-    .collection-top h2 {
-      font-family: Georgia, serif;
-      font-size: 30px;
-      margin: 8px 0 0 0;
+    .section-head h2 {
+      position: relative;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      color: var(--pink-deep);
+      padding-bottom: 12px;
     }
 
-    .collection-tools {
-      display: flex;
-      gap: 12px;
+    .section-head h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: var(--marigold);
     }
 
-    .search-box {
-      width: 160px;
-      padding: 12px 14px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      background-color: white;
-      font-size: 12px;
+    .view-all {
+      font-weight: 600;
+      color: var(--pink-deep);
     }
 
-    .sort-btn {
-      padding: 12px 20px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      background-color: #fbf7f2;
-      font-size: 13px;
-      cursor: pointer;
+    .view-all:hover {
+      text-decoration: underline;
     }
 
-    .product-grid {
+
+    .occasions {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 25px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
     }
 
-    .product {
-      background-color: white;
-      border: 1px solid #eee;
-      border-radius: 18px;
-      padding: 8px 8px 12px 8px;
+    .occasion {
+      padding: 32px 12px;
+      text-align: center;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background-color: #f5e1dc;
-      border-radius: 14px;
+    .occasion .icon {
       display: block;
+      font-size: 34px;
+      margin-bottom: 8px;
     }
 
-    .product h3 {
-      font-size: 13px;
-      font-weight: normal;
-      margin: 12px 0 4px 5px;
+    .occasion:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
     }
 
-    .product p {
-      font-size: 11px;
-      color: #666;
-      margin: 0 0 0 5px;
+
+    .birthday    { background-color: #fde2e4; }
+    .anniversary { background-color: #ffeccc; }
+    .graduation  { background-color: #fad2e1; }
+    .valentines  { background-color: #f8c8d4; }
+    .thankyou    { background-color: #fbe5c8; }
+
+
+    .gifts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
     }
 
-    .product-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
+    .gift {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .product-link:hover .product {
-      border-color: #b8472d;
+    .gift:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-big);
     }
 
-    /* ---------- Product detail view ---------- */
-
-    .back {
-      display: inline-block;
-      margin-top: 30px;
-      color: #444;
-      text-decoration: none;
-      font-size: 14px;
+    .gift img {
+      height: 210px;
+      object-fit: cover;
+      transition: transform 0.4s;
     }
 
-    .detail {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      margin-top: 25px;
+    .gift:hover img {
+      transform: scale(1.06);
     }
 
-    .detail img {
-      width: 45%;
-      height: auto;
-      border-radius: 20px;
+    .gift-photo {
+      overflow: hidden;
     }
 
-    .detail-text {
-      width: 45%;
+    .gift-info {
+      padding: 20px;
+      text-align: center;
     }
 
-    .detail-text h1 {
-      font-family: Georgia, serif;
-      font-size: 40px;
-      margin: 12px 0;
+    .gift-info h3 {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      margin-bottom: 4px;
     }
 
     .price {
-      font-size: 20px;
-      color: #b8472d;
-      margin: 0 0 15px 0;
+      font-weight: 600;
+      color: var(--pink-deep);
+      margin-bottom: 16px;
     }
 
-    .description {
-      line-height: 1.6;
-      margin-bottom: 25px;
+    .gift-info button {
+      width: 100%;
+      font-family: var(--font-body);
+      font-weight: 600;
+      background-color: var(--pink-deep);
+      color: var(--white);
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .gift-info button:hover {
+      background-color: var(--pink-dark);
+    }
+
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 40px;
+      background-color: var(--sand);
+      border-radius: 24px;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 14px;
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      background-color: var(--pink-deep);
+      border-radius: 50%;
+    }
+
+    .step h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .site-footer {
+      margin-top: 80px;
+      padding: 32px 0;
+      background-color: var(--text);
+      color: var(--sand);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .site-footer .logo {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--marigold);
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 36px 28px;
+        background:
+          linear-gradient(rgba(251, 227, 234, 0.88), rgba(251, 227, 234, 0.88)),
+          url('images/gifts.jpg') center / cover no-repeat;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .occasions,
+      .gifts,
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .btn {
+        margin-bottom: 10px;
+      }
+
+      .occasions,
+      .gifts,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="header">
-    <div class="logo">Sajilo Gift</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Sajilo Gift</div>
 
-    <div class="menu">
-      <a href="#">Occasions</a>
-      <a href="#collection" onclick="goBack()">Collection</a>
-      <a href="#">Build a box</a>
-      <a href="#">Track order</a>
+      <nav class="nav-links">
+        <a href="#occasions">Occasions</a>
+        <a href="#collection">Collection</a>
+        <a href="#how-it-works">Build a box</a>
+        <a href="#">Track order</a>
+      </nav>
+
+      <a href="#" class="cart">Cart - 2</a>
     </div>
+  </header>
 
-    <div class="cart">Cart</div>
-  </div>
+  <main class="container">
 
-  <div id="main-page">
+    <section class="hero">
+      <div class="hero-text">
+        <span class="hero-tag">PERSONALIZED GIFT BOXES</span>
+        <h1>Gifts that feel like <span>them.</span></h1>
+        <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
+        <a href="#how-it-works" class="btn btn-primary">Build your box</a>
+        <a href="#occasions" class="btn btn-outline">Shop by occasion</a>
+      </div>
+    </section>
 
-  <div class="hero">
-    <div class="hero-text">
-      <p class="small-title">PERSONALIZED GIFT BOXES</p>
-      <h1>Gifts that feel like <span>them.</span></h1>
-      <p>Pick items, set a budget, write a note. We pack it, and deliver it on the day.</p>
-      <button class="btn-red">Build your box</button>
-      <button class="btn-outline">Shop by occasion</button>
-    </div>
-
-    <div class="hero-image">Image</div>
-  </div>
-
-  <div class="section-top">
-    <span class="small-title">SHOP BY OCCASION</span>
-    <a href="#">View all</a>
-  </div>
-
-  <div class="occasions">
-    <div class="occasion" style="background-color: #f5e1dc;">Birthday</div>
-    <div class="occasion" style="background-color: #dde6da;">Anniversary</div>
-    <div class="occasion" style="background-color: #dde6ee;">Graduation</div>
-    <div class="occasion" style="background-color: #e6dfee;">Valentine's</div>
-    <div class="occasion" style="background-color: #efe5d3;">Thank you</div>
-  </div>
-
-  <p class="small-title" style="margin-top: 40px;">FEATURED GIFTS</p>
-
-  <div class="gifts">
-    <div class="gift">
-      <div class="gift-image" style="background-color: #efe5d3;"></div>
-      <p>Cozy evening</p>
-      <p>NPR 1500</p>
-    </div>
-
-    <div class="gift">
-      <div class="gift-image" style="background-color: #f5e1dc;"></div>
-      <p>Sweet moments</p>
-      <p>NPR 1200</p>
-    </div>
-
-    <div class="gift">
-      <div class="gift-image" style="background-color: #dde6ee;"></div>
-      <p>Study buddy</p>
-      <p>NPR 800</p>
-    </div>
-
-    <div class="gift">
-      <div class="gift-image" style="background-color: #dde6da;"></div>
-      <p>Green thanks</p>
-      <p>NPR 800</p>
-    </div>
-  </div>
-
-  <!-- NEW: Collection section -->
-  <div class="collection" id="collection">
-
-    <div class="collection-top">
-      <div>
-        <span class="small-title">SHOP</span>
-        <h2>Gift collection</h2>
+    <section class="section" id="occasions">
+      <div class="section-head">
+        <h2>Shop by occasion</h2>
+        <a href="#" class="view-all">View all</a>
       </div>
 
-      <div class="collection-tools">
-        <input class="search-box" type="text" placeholder="Search gifts">
-        <button class="sort-btn">Sort: Popular</button>
+      <div class="occasions">
+        <div class="occasion birthday"><span class="icon">🎂</span>Birthday</div>
+        <div class="occasion anniversary"><span class="icon">💞</span>Anniversary</div>
+        <div class="occasion graduation"><span class="icon">🎓</span>Graduation</div>
+        <div class="occasion valentines"><span class="icon">🌹</span>Valentine's</div>
+        <div class="occasion thankyou"><span class="icon">🙏</span>Thank you</div>
       </div>
-    </div>
+    </section>
 
-    <div class="product-grid">
-
-      <a class="product-link" href="#" onclick="showProduct('candle'); return false;">
-        <div class="product">
-          <img src="images/candle.jpg" alt="Scented candle">
-          <h3>Scented candle</h3>
-          <p>NPR 450</p>
-        </div>
-      </a>
-
-      <a class="product-link" href="#" onclick="showProduct('chocolate'); return false;">
-        <div class="product">
-          <img src="images/chocolate.jpg" alt="Chocolate box">
-          <h3>Chocolate box</h3>
-          <p>NPR 600</p>
-        </div>
-      </a>
-
-      <a class="product-link" href="#" onclick="showProduct('loktapaper'); return false;">
-        <div class="product">
-          <img src="images/loktapaper.jpg" alt="Lokta notebook">
-          <h3>Lokta notebook</h3>
-          <p>NPR 350</p>
-        </div>
-      </a>
-
-      <a class="product-link" href="#" onclick="showProduct('teasampler'); return false;">
-        <div class="product">
-          <img src="images/teasampler.jpg" alt="Tea sampler">
-          <h3>Tea sampler</h3>
-          <p>NPR 500</p>
-        </div>
-      </a>
-
-      <a class="product-link" href="#" onclick="showProduct('plant'); return false;">
-        <div class="product">
-          <img src="images/plant.jpg" alt="Mini plant">
-          <h3>Mini plant</h3>
-          <p>NPR 400</p>
-        </div>
-      </a>
-
-      <a class="product-link" href="#" onclick="showProduct('photoframe'); return false;">
-        <div class="product">
-          <img src="images/photoframe.jpg" alt="Photo frame">
-          <h3>Photo frame</h3>
-          <p>NPR 700</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  </div>
-  <!-- end of main page -->
-
-  <!-- Product detail view (hidden until a product is clicked) -->
-  <div id="detail-page" style="display: none;">
-    <a class="back" href="#" onclick="goBack(); return false;">&larr; Back to collection</a>
-
-    <div class="detail">
-      <img id="detail-img" src="" alt="">
-
-      <div class="detail-text">
-        <p class="small-title">GIFT COLLECTION</p>
-        <h1 id="detail-name"></h1>
-        <p class="price" id="detail-price"></p>
-        <p class="description" id="detail-desc"></p>
-        <button class="btn-red">Add to cart</button>
+    <section class="section" id="collection">
+      <div class="section-head">
+        <h2>Featured gifts</h2>
       </div>
+
+      <div class="gifts">
+        <article class="gift">
+          <div class="gift-photo">
+            <img src="images/cozyevening.jpg" alt="Cozy evening gift box">
+          </div>
+          <div class="gift-info">
+            <h3>Cozy evening</h3>
+            <p class="price">NPR 1500</p>
+            <button>Add to cart</button>
+          </div>
+        </article>
+
+        <article class="gift">
+          <div class="gift-photo">
+            <img src="images/sweetmoments.jpg" alt="Sweet moments gift box">
+          </div>
+          <div class="gift-info">
+            <h3>Sweet moments</h3>
+            <p class="price">NPR 1200</p>
+            <button>Add to cart</button>
+          </div>
+        </article>
+
+        <article class="gift">
+          <div class="gift-photo">
+            <img src="images/studybuddy.jpg" alt="Study buddy gift box">
+          </div>
+          <div class="gift-info">
+            <h3>Study buddy</h3>
+            <p class="price">NPR 800</p>
+            <button>Add to cart</button>
+          </div>
+        </article>
+
+        <article class="gift">
+          <div class="gift-photo">
+            <img src="images/greenthanks.jpg" alt="Green thanks gift box">
+          </div>
+          <div class="gift-info">
+            <h3>Green thanks</h3>
+            <p class="price">NPR 800</p>
+            <button>Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="section-head">
+        <h2>How it works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Pick items</h3>
+          <p>Choose what they would love.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Set a budget</h3>
+          <p>Stay within what you want to spend.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Write a note</h3>
+          <p>Add a personal message.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>We deliver</h3>
+          <p>Packed and delivered on the day.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="logo">Sajilo Gift</span>
+      &copy; 2026 Sajilo Gift. Made with care in Nepal.
     </div>
-  </div>
-
-  <script>
-    var products = {
-      candle: {
-        name: "Scented candle",
-        price: "NPR 450",
-        image: "images/candle.jpg",
-        desc: "Hand-poured candle with a soft, calming scent. It burns slowly and fills the room with warmth, making it a cozy gift for any evening."
-      },
-      chocolate: {
-        name: "Chocolate box",
-        price: "NPR 600",
-        image: "images/chocolate.jpg",
-        desc: "A box of rich, smooth chocolates in assorted flavours. A sweet treat that works for birthdays, anniversaries or a simple thank you."
-      },
-      loktapaper: {
-        name: "Lokta notebook",
-        price: "NPR 350",
-        image: "images/loktapaper.jpg",
-        desc: "A notebook made from traditional Nepali lokta paper. Handmade and eco-friendly, great for journaling, sketching or taking notes."
-      },
-      teasampler: {
-        name: "Tea sampler",
-        price: "NPR 500",
-        image: "images/teasampler.jpg",
-        desc: "A small collection of different teas to taste and enjoy. A relaxing gift for tea lovers, ready to brew with a warm cup."
-      },
-      plant: {
-        name: "Mini plant",
-        price: "NPR 400",
-        image: "images/plant.jpg",
-        desc: "A cute mini plant in a small pot that brightens any desk or shelf. Easy to care for and a fresh, green way to say thanks."
-      },
-      photoframe: {
-        name: "Photo frame",
-        price: "NPR 700",
-        image: "images/photoframe.jpg",
-        desc: "A simple, stylish frame to hold a favourite memory. A lovely gift for friends and family that they can display at home."
-      }
-    };
-
-    function showProduct(key) {
-      var p = products[key];
-      document.getElementById("detail-img").src = p.image;
-      document.getElementById("detail-img").alt = p.name;
-      document.getElementById("detail-name").innerHTML = p.name;
-      document.getElementById("detail-price").innerHTML = p.price;
-      document.getElementById("detail-desc").innerHTML = p.desc;
-
-      document.getElementById("main-page").style.display = "none";
-      document.getElementById("detail-page").style.display = "block";
-      window.scrollTo(0, 0);
-    }
-
-    function goBack() {
-      document.getElementById("detail-page").style.display = "none";
-      document.getElementById("main-page").style.display = "block";
-      document.getElementById("collection").scrollIntoView();
-    }
-  </script>
+  </footer>
 
 </body>
 </html>
